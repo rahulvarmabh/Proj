@@ -1,0 +1,67 @@
+﻿
+@model Proj.Models.SalaryModel
+@{
+    ViewBag.Title = "ASp.Net MVC : How to Bind Hyper Link In WebGrid Rows Using C#";
+}
+
+<style type="text/css">
+    .gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+        .gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+
+        .gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+
+        .gridtable tr:hover td,
+        .gridtable tr.even:hover td.active,
+        .gridtable tr.odd:hover td.active {
+            background: #b6ff00;
+        }
+</style>
+
+@using (Html.BeginForm("Grid", "Salary"))
+{
+    <div>
+            <table width="100%" cellpadding="5" cellspacing="2" border="0" style="background-color: White;">
+                <tr>
+                    <td>
+                        @{
+                            var grid = new WebGrid(source: Model.Salary,
+                            rowsPerPage: 10,
+                            canSort: true);
+
+                        }
+                        @grid.GetHtml(
+                            tableStyle: "gridtable",
+                            alternatingRowStyle: "even",
+                            columns: grid.Columns(
+                            grid.Column("basicpay", "basicpay"),
+                            grid.Column("da","da"),
+                            grid.Column("hra", "hra"),
+                            grid.Column("pf", "pf"),
+                            grid.Column("tax", "tax"),
+                            grid.Column("netsalary", "netsalary")))
+                    </td>
+                </tr>
+            </table>
+    </div>
+
+}

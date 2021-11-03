@@ -1,0 +1,119 @@
+﻿@model Proj.Models.Salary
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    .gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+
+        .gridtable th {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+        }
+
+        .gridtable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+
+        .gridtable tr:hover td,
+        .gridtable tr.even:hover td.active,
+        .gridtable tr.odd:hover td.active {
+            background: #b6ff00;
+        }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    .center {
+        border: 5px solid #FFFF00;
+        text-align: center;
+    }
+</style>
+
+<h2>Index</h2>
+
+<html>
+<head>
+    Salary Calculator
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("/Index", "Salary", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="name">Basic Pay</label>
+                <input type="text" class="form-control" id="basicpay" name="basicpay" value="@Model.basicpay" />
+            </div>
+            <div class="form-group">
+                <label for="name">HRA</label>
+                <input type="text" class="form-control" id="hra" name="hra" value="@Model.hra" />
+            </div>
+            <div class="form-group">
+                <label for="name">DA</label>
+                <input type="text" class="form-control" id="da" name="da" value="@Model.da" />
+            </div>
+            <div class="form-group">
+                <label for="name">PF</label>
+                <input type="text" class="form-control" id="pf" name="pf" value="@Model.pf" />
+            </div>
+            <div class="form-group">
+                <label for="name">Tax</label>
+                <input type="text" class="form-control" id="tax" name="tax" value="@Model.tax" />
+            </div>
+            <div class="form-group">
+                <label for="name">Net Salary</label>
+                <input type="text" class="form-control" id="netsalary" name="netsalary" value="@Model.netsalary" />
+            </div>
+            <button type="submit" class="btn btn-info" id="add" value="add">Calculate</button>
+        }
+    </div>
+    
+    <div>
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <td>Name</td>
+            </tr>
+            <tr>
+                <th>Basic Pay </th>
+                <td>@Model.basicpay</td>
+            </tr>
+            <tr>
+                <th>DA        </th>
+                <td>@Model.da</td>
+            </tr>
+            <tr>
+                <th>HRA        </th>
+                <td>@Model.hra</td>
+            </tr>
+            <tr>
+                <th>PF        </th>
+                <td>@Model.pf</td>
+            </tr>
+            <tr>
+                <th>Tax       </th>
+                <td>@Model.tax</td>
+            </tr>
+            <tr>
+                <th>Net Salary</th>
+                <td>@Model.netsalary</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
